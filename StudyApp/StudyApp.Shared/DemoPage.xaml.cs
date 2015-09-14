@@ -43,6 +43,18 @@ namespace StudyApp
             {
                 insert.populateEnglishTables();
             }
+            if (model.getMaths() == null)
+            {
+                insert.pupulateMathsTable();
+            }
+            if (model.getBusiness() == null)
+            {
+                insert.pupulateBusinessTable();
+            }
+            if (model.getAccounting() == null)
+            {
+                insert.pupulateAccountingTable();
+            }
             comboList.Items.Add("GRADE 1");
             comboList.Items.Add("GRADE 2");
             comboList.Items.Add("GRADE 3");
@@ -59,23 +71,33 @@ namespace StudyApp
         }
         private void btnEnglish_Click(object sender, RoutedEventArgs e)
         {
-            
+
             //string myGrade = item.Substring(0,item.IndexOf(':'));
             if (comboList.SelectedItem == null)
             {
-                
+
                 messageBox("You must select the grade first");
             }
-            else { 
-                string item = comboList.SelectedItem.ToString()+":English";
-            this.Frame.Navigate(typeof(QuestionsPage),item);
+            else
+            {
+                string item = comboList.SelectedItem.ToString() + ":English";
+                this.Frame.Navigate(typeof(QuestionsPage), item);
             }
-            
+
         }
 
         private void btnMaths_Click(object sender, RoutedEventArgs e)
         {
+            if (comboList.SelectedItem == null)
+            {
 
+                messageBox("You must select the grade first");
+            }
+            else
+            {
+                string item = comboList.SelectedItem.ToString() + ":Maths";
+                this.Frame.Navigate(typeof(QuestionsPage), item);
+            }
         }
 
         private void comboList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -88,6 +110,34 @@ namespace StudyApp
         {
             var dialog = new Windows.UI.Popups.MessageDialog(msg);
             await dialog.ShowAsync();
+        }
+
+        private void btnBusiness_Click(object sender, RoutedEventArgs e)
+        {
+            if (comboList.SelectedItem == null)
+            {
+
+                messageBox("You must select the grade first");
+            }
+            else
+            {
+                string item = comboList.SelectedItem.ToString() + ":Business";
+                this.Frame.Navigate(typeof(QuestionsPage), item);
+            }
+        }
+
+        private void btnAccounting_Click(object sender, RoutedEventArgs e)
+        {
+            if (comboList.SelectedItem == null)
+            {
+
+                messageBox("You must select the grade first");
+            }
+            else
+            {
+                string item = comboList.SelectedItem.ToString() + ":Accounting";
+                this.Frame.Navigate(typeof(QuestionsPage), item);
+            }
         }
     }
 }

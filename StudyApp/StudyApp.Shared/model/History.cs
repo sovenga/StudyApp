@@ -5,7 +5,7 @@ using System.Text;
 
 namespace StudyApp.model
 {
-    class Maths
+    class History
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

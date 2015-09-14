@@ -40,9 +40,8 @@
       <RootProperty Name="FontWeight" />
       <RootProperty Name="FontStyle" />
       <RootProperty Name="Foreground" />
-      <RootProperty Name="Text" />
-      <RootProperty Name="Inlines" />
       <RootProperty Name="FontFamily" />
+      <RootProperty Name="Text" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
@@ -98,10 +97,9 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="Foreground" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="FontSize" />
       <RootEvent Name="Checked" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Documents.Run">
-      <RootProperty Name="Text" />
     </RootType>
     <RootType FullName="StudyApp.QuestionsPage" />
   </Roots.RootTypes>

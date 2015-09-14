@@ -24,9 +24,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)model\Accounting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)model\Business.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)model\English.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)model\Geography.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)model\History.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)model\Life.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)model\Maths.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)model\Physics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)QuestionsPage.xaml.cs">
       <DependentUpon>QuestionsPage.xaml</DependentUpon>
     </Compile>

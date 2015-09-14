@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,6 +28,14 @@ namespace StudyApp
     {
         InsertModule module = null;
         English correct_answer = null;
+        Maths maths = null;
+        Business business = null;
+        Accounting accounting = null;
+        Geography geography = null;
+        History history = null;
+        Life life = null;
+        Physics physics = null;
+
         double marks = 0.0;
         List<string> list = new List<string>();
         private ObservableCollection<SubjectViewModel> subjects = null;
@@ -45,10 +54,21 @@ namespace StudyApp
         int readQuestion = 0;
         string myQuestion = null;
         string pass_question = string.Empty;
-        int countButton = 0;
+        int countButton = 1;
+        string selectedItem = "";
+        string table = "";
         public QuestionsPage()
         {
             this.InitializeComponent();
+            subject = new SubjectViewModel();
+            correct_answer = new English();
+            maths = new Maths();
+            business = new Business();
+            accounting = new Accounting();
+            geography = new Geography();
+            history = new History();
+            life = new Life();
+            physics = new Physics();
         }
 
         /// <summary>
@@ -58,8 +78,20 @@ namespace StudyApp
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            lblTop.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            lblTop2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             item = e.Parameter as string;
-
+            table = item.Substring(item.IndexOf(":") + 1);
+            lblTable.Text = table + " Studdy Questions";
+            combo.Items.Add("10");
+            combo.Items.Add("20");
+            combo.Items.Add("30");
+            combo.Items.Add("50");
+            radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            lblDisplayMark.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            btnFinish.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
         private async void messageBox(string msg)
         {
@@ -69,19 +101,40 @@ namespace StudyApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            subject.updateEnglishToNotRead();
-            this.Frame.Navigate(typeof(DemoPage));
-        }
+            try
+            {
+                subject.updateEnglishToNotRead();
+                this.Frame.Navigate(typeof(DemoPage));
+            }
+            catch
+            {
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+            }
+        }
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
-
+            var dialog = new MessageDialog("Select option");
+            dialog.Commands.Add(new UICommand("Write Test Again", new UICommandInvokedHandler(testCommandhandler)));
+            dialog.Commands.Add(new UICommand("Previous Quetions", new UICommandInvokedHandler(testCommandhandler)));
+            await dialog.ShowAsync();
+        }
+        private void testCommandhandler(IUICommand cmd)
+        {
+            var lable = cmd.Label;
+            switch (lable)
+            {
+                case "Write Test Again":
+                    this.Frame.Navigate(typeof(DemoPage));
+                    break;
+                case "Previous Quetions":
+                    break;
+            }
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
-            this.Frame.Navigate(typeof(QuestionsPage));
+            this.Frame.Navigate(typeof(QuestionsPage), item);
         }
         private void radAnswer1_Checked(object sender, RoutedEventArgs e)
         {
@@ -89,20 +142,125 @@ namespace StudyApp
             radAnswer3.IsEnabled = false;
             if (radAnswer1.IsChecked == true)
             {
-                subject.remove(pass_question);
-                if (radAnswer1.Content.Equals(correct_answer.answer))
+                if (table.Equals("English"))
                 {
-                    marks = marks + 2;
+                    subject.remove(pass_question);
+                    if (radAnswer1.Content.Equals(correct_answer.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Maths"))
+                {
+                    subject.removeMaths(pass_question);
+                    if (radAnswer1.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Accounting"))
+                {
+                    subject.removeAccounting(pass_question);
+                    if (radAnswer1.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Business"))
+                {
+                    subject.removeBusiness(pass_question);
+                    if (radAnswer1.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Geography"))
+                {
+                    subject.removeGeography(pass_question);
+                    if (radAnswer1.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("History"))
+                {
+                    subject.removeHistory(pass_question);
+                    if (radAnswer1.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Life"))
+                {
+                    subject.removeGeography(pass_question);
+                    if (radAnswer1.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Physics"))
+                {
+                    subject.removePhysics(pass_question);
+                    if (radAnswer1.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
                 }
             }
-            lblMarks.Text = marks + "%";
+            lblMarks.Text = "Mark: " + marks + "";
         }
 
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
+            radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            lblDisplayMark.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            lblTop.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            lblTop2.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            int selItem = 0;
             module = new InsertModule();
             int number = 0;
-            countButton++;
             myList = new List<SubjectViewModel>();
             subjects = new ObservableCollection<SubjectViewModel>();
             subjectsList = new List<SubjectViewModel>();
@@ -110,8 +268,9 @@ namespace StudyApp
             subjectModel = new SubjectsViewModel();
 
             string grade = item.Substring(0, item.IndexOf(":"));
-            string table = item.Substring(item.IndexOf(":") + 1);
-            subject = new SubjectViewModel();
+            table = item.Substring(item.IndexOf(":") + 1);
+
+            btnNext.Content = "Question " + countButton + ".";
             try
             {
                 if (table.Equals("English"))
@@ -127,7 +286,7 @@ namespace StudyApp
                         names[count] = i.QUESTION + "#" + i.ANSWER + "#" + i.ANSWER1 + "#" + i.ANSWER2;
                         count++;
                     }
-
+                    combo.SelectedIndex.ToString();
                     string answer1 = string.Empty, answer2 = string.Empty, answer3 = string.Empty;
                     if (readQuestion.Equals(number)) { }
                     number = random.Next(0, totalItems);
@@ -142,50 +301,510 @@ namespace StudyApp
                     pass_question = it.Substring(0, it.IndexOf("#"));
 
                     myQuestion = pass_question;
-                    lblQuestion.Text = it.Substring(0, it.IndexOf("#"));
+                    lblQuestion.Text = countButton + "." + it.Substring(0, it.IndexOf("#"));
                     correct_answer = subject.getEnglishCorrectAnswer(pass_question);
-                    string[] answers_array = { answer1, answer2, answer3 };
-                    Random ran = new Random();
-                    int num = 0;
-                    num = ran.Next(0, 2);
-                    int num1 = ran.Next(0, 2);
-                    int num2 = ran.Next(0, 2);
-                    if (num == num1)
-                    {
-                        radAnswer1.Content = answers_array[2];
-                        radAnswer2.Content = answers_array[1];
-                        radAnswer3.Content = answers_array[0];
 
-                    }
-                    else if (num == num2)
+                    if (subject.verifyExist(pass_question, answer1))
                     {
-                        radAnswer1.Content = answers_array[0];
-                        radAnswer2.Content = answers_array[1];
-                        radAnswer3.Content = answers_array[2];
-                    }
-                    else if (num1 == num2)
-                    {
-                        radAnswer1.Content = answers_array[2];
-                        radAnswer2.Content = answers_array[0];
-                        radAnswer3.Content = answers_array[1];
-                    }
-                    else if (num == num1 && num == num2)
-                    {
-                        radAnswer1.Content = answers_array[2];
-                        radAnswer2.Content = answers_array[0];
-                        radAnswer3.Content = answers_array[1];
-                    }
-                    else
-                    {
-                        radAnswer1.Content = answers_array[num];
-                        radAnswer2.Content = answers_array[num1];
-                        radAnswer3.Content = answers_array[num2];
-                    }
+                        string[] answers_array = { answer1, answer2, answer3 };
+                        Random ran = new Random();
+                        int num = 0;
+                        num = ran.Next(0, 2);
+                        int num1 = ran.Next(0, 2);
+                        int num2 = ran.Next(0, 2);
+                        if (num == num1)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[0];
 
+                        }
+                        else if (num == num2)
+                        {
+                            radAnswer1.Content = answers_array[0];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[2];
+                        }
+                        else if (num1 == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else if (num == num1 && num == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else
+                        {
+                            radAnswer1.Content = answers_array[num];
+                            radAnswer2.Content = answers_array[num1];
+                            radAnswer3.Content = answers_array[num2];
+                        }
+                    }
                 }
                 else if (table.Equals("Maths"))
                 {
+                    subjects = subjectModel.getMathsQuestions1(grade);
+                    int totalItems = subjects.Count();
+                    int count = 0;
+                    names = new string[subjects.Count()];
+                    foreach (var i in subjects)
+                    {
+                        names[count] = i.QUESTION + "#" + i.ANSWER + "#" + i.ANSWER1 + "#" + i.ANSWER2;
+                        count++;
+                    }
+                    combo.SelectedIndex.ToString();
+                    string answer1 = string.Empty, answer2 = string.Empty, answer3 = string.Empty;
+                    if (readQuestion.Equals(number)) { }
+                    number = random.Next(0, totalItems);
+                    readQuestion = number;
+                    it = names[number];
+                    names = it.Split('#');
+                    answer1 = names[1];
+                    answer2 = names[2];
+                    answer3 = names[3];
+                    pass_question = it.Substring(0, it.IndexOf("#"));
+                    myQuestion = pass_question;
+                    lblQuestion.Text = countButton + "." + it.Substring(0, it.IndexOf("#"));
+                    maths = subject.getMathsCorrectAnswer(pass_question);
+                    if (subject.verifyMathsExist(pass_question, answer1))
+                    {
+                        string[] answers_array = { answer1, answer2, answer3 };
+                        Random ran = new Random();
+                        int num = 0;
+                        num = ran.Next(0, 2);
+                        int num1 = ran.Next(0, 2);
+                        int num2 = ran.Next(0, 2);
+                        if (num == num1)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[0];
+                        }
+                        else if (num == num2)
+                        {
+                            radAnswer1.Content = answers_array[0];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[2];
+                        }
+                        else if (num1 == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else if (num == num1 && num == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else
+                        {
+                            radAnswer1.Content = answers_array[num];
+                            radAnswer2.Content = answers_array[num1];
+                            radAnswer3.Content = answers_array[num2];
+                        }
+                    }
 
+                }
+                else if (table.Equals("Business"))
+                {
+                    subjects = subjectModel.getBusinessQuestions1(grade);
+                    int totalItems = subjects.Count();
+                    int count = 0;
+                    names = new string[subjects.Count()];
+                    foreach (var i in subjects)
+                    {
+                        names[count] = i.QUESTION + "#" + i.ANSWER + "#" + i.ANSWER1 + "#" + i.ANSWER2;
+                        count++;
+                    }
+                    combo.SelectedIndex.ToString();
+                    string answer1 = string.Empty, answer2 = string.Empty, answer3 = string.Empty;
+                    if (readQuestion.Equals(number)) { }
+                    number = random.Next(0, totalItems);
+                    readQuestion = number;
+                    it = names[number];
+                    names = it.Split('#');
+                    answer1 = names[1];
+                    answer2 = names[2];
+                    answer3 = names[3];
+                    pass_question = it.Substring(0, it.IndexOf("#"));
+                    myQuestion = pass_question;
+                    lblQuestion.Text = countButton + "." + it.Substring(0, it.IndexOf("#"));
+                    business = subject.getBusinessCorrectAnswer(pass_question);
+                    if (subject.verifyBusinessExist(pass_question, answer1))
+                    {
+                        string[] answers_array = { answer1, answer2, answer3 };
+                        Random ran = new Random();
+                        int num = 0;
+                        num = ran.Next(0, 2);
+                        int num1 = ran.Next(0, 2);
+                        int num2 = ran.Next(0, 2);
+                        if (num == num1)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[0];
+                        }
+                        else if (num == num2)
+                        {
+                            radAnswer1.Content = answers_array[0];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[2];
+                        }
+                        else if (num1 == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else if (num == num1 && num == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else
+                        {
+                            radAnswer1.Content = answers_array[num];
+                            radAnswer2.Content = answers_array[num1];
+                            radAnswer3.Content = answers_array[num2];
+                        }
+                    }
+
+                }
+                else if (table.Equals("Accounting"))
+                {
+                    subjects = subjectModel.getAccountingQuestions1(grade);
+                    int totalItems = subjects.Count();
+                    int count = 0;
+                    names = new string[subjects.Count()];
+                    foreach (var i in subjects)
+                    {
+                        names[count] = i.QUESTION + "#" + i.ANSWER + "#" + i.ANSWER1 + "#" + i.ANSWER2;
+                        count++;
+                    }
+                    combo.SelectedIndex.ToString();
+                    string answer1 = string.Empty, answer2 = string.Empty, answer3 = string.Empty;
+                    if (readQuestion.Equals(number)) { }
+                    number = random.Next(0, totalItems);
+                    readQuestion = number;
+                    it = names[number];
+                    names = it.Split('#');
+                    answer1 = names[1];
+                    answer2 = names[2];
+                    answer3 = names[3];
+                    pass_question = it.Substring(0, it.IndexOf("#"));
+                    myQuestion = pass_question;
+                    lblQuestion.Text = countButton + "." + it.Substring(0, it.IndexOf("#"));
+                    accounting = subject.getAccountingCorrectAnswer(pass_question);
+                    if (subject.verifyAccountingExist(pass_question, answer1))
+                    {
+                        string[] answers_array = { answer1, answer2, answer3 };
+                        Random ran = new Random();
+                        int num = 0;
+                        num = ran.Next(0, 2);
+                        int num1 = ran.Next(0, 2);
+                        int num2 = ran.Next(0, 2);
+                        if (num == num1)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[0];
+                        }
+                        else if (num == num2)
+                        {
+                            radAnswer1.Content = answers_array[0];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[2];
+                        }
+                        else if (num1 == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else if (num == num1 && num == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else
+                        {
+                            radAnswer1.Content = answers_array[num];
+                            radAnswer2.Content = answers_array[num1];
+                            radAnswer3.Content = answers_array[num2];
+                        }
+                    }
+
+                }
+                else if (table.Equals("Geography"))
+                {
+                    subjects = subjectModel.getGeographyQuestions1(grade);
+                    int totalItems = subjects.Count();
+                    int count = 0;
+                    names = new string[subjects.Count()];
+                    foreach (var i in subjects)
+                    {
+                        names[count] = i.QUESTION + "#" + i.ANSWER + "#" + i.ANSWER1 + "#" + i.ANSWER2;
+                        count++;
+                    }
+                    combo.SelectedIndex.ToString();
+                    string answer1 = string.Empty, answer2 = string.Empty, answer3 = string.Empty;
+                    if (readQuestion.Equals(number)) { }
+                    number = random.Next(0, totalItems);
+                    readQuestion = number;
+                    it = names[number];
+                    names = it.Split('#');
+                    answer1 = names[1];
+                    answer2 = names[2];
+                    answer3 = names[3];
+                    pass_question = it.Substring(0, it.IndexOf("#"));
+                    myQuestion = pass_question;
+                    lblQuestion.Text = countButton + "." + it.Substring(0, it.IndexOf("#"));
+                    geography = subject.getGeographyCorrectAnswer(pass_question);
+                    if (subject.verifyGeographyExist(pass_question, answer1))
+                    {
+                        string[] answers_array = { answer1, answer2, answer3 };
+                        Random ran = new Random();
+                        int num = 0;
+                        num = ran.Next(0, 2);
+                        int num1 = ran.Next(0, 2);
+                        int num2 = ran.Next(0, 2);
+                        if (num == num1)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[0];
+                        }
+                        else if (num == num2)
+                        {
+                            radAnswer1.Content = answers_array[0];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[2];
+                        }
+                        else if (num1 == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else if (num == num1 && num == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else
+                        {
+                            radAnswer1.Content = answers_array[num];
+                            radAnswer2.Content = answers_array[num1];
+                            radAnswer3.Content = answers_array[num2];
+                        }
+                    }
+
+                }
+                else if (table.Equals("History"))
+                {
+                    subjects = subjectModel.getHistoryQuestions1(grade);
+                    int totalItems = subjects.Count();
+                    int count = 0;
+                    names = new string[subjects.Count()];
+                    foreach (var i in subjects)
+                    {
+                        names[count] = i.QUESTION + "#" + i.ANSWER + "#" + i.ANSWER1 + "#" + i.ANSWER2;
+                        count++;
+                    }
+                    combo.SelectedIndex.ToString();
+                    string answer1 = string.Empty, answer2 = string.Empty, answer3 = string.Empty;
+                    if (readQuestion.Equals(number)) { }
+                    number = random.Next(0, totalItems);
+                    readQuestion = number;
+                    it = names[number];
+                    names = it.Split('#');
+                    answer1 = names[1];
+                    answer2 = names[2];
+                    answer3 = names[3];
+                    pass_question = it.Substring(0, it.IndexOf("#"));
+                    myQuestion = pass_question;
+                    lblQuestion.Text = countButton + "." + it.Substring(0, it.IndexOf("#"));
+                    history = subject.getHistoryCorrectAnswer(pass_question);
+                    if (subject.verifyHistoryExist(pass_question, answer1))
+                    {
+                        string[] answers_array = { answer1, answer2, answer3 };
+                        Random ran = new Random();
+                        int num = 0;
+                        num = ran.Next(0, 2);
+                        int num1 = ran.Next(0, 2);
+                        int num2 = ran.Next(0, 2);
+                        if (num == num1)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[0];
+                        }
+                        else if (num == num2)
+                        {
+                            radAnswer1.Content = answers_array[0];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[2];
+                        }
+                        else if (num1 == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else if (num == num1 && num == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else
+                        {
+                            radAnswer1.Content = answers_array[num];
+                            radAnswer2.Content = answers_array[num1];
+                            radAnswer3.Content = answers_array[num2];
+                        }
+                    }
+
+                }
+                else if (table.Equals("Life"))
+                {
+                    subjects = subjectModel.getLifeOrientationQuestions1(grade);
+                    int totalItems = subjects.Count();
+                    int count = 0;
+                    names = new string[subjects.Count()];
+                    foreach (var i in subjects)
+                    {
+                        names[count] = i.QUESTION + "#" + i.ANSWER + "#" + i.ANSWER1 + "#" + i.ANSWER2;
+                        count++;
+                    }
+                    combo.SelectedIndex.ToString();
+                    string answer1 = string.Empty, answer2 = string.Empty, answer3 = string.Empty;
+                    if (readQuestion.Equals(number)) { }
+                    number = random.Next(0, totalItems);
+                    readQuestion = number;
+                    it = names[number];
+                    names = it.Split('#');
+                    answer1 = names[1];
+                    answer2 = names[2];
+                    answer3 = names[3];
+                    pass_question = it.Substring(0, it.IndexOf("#"));
+                    myQuestion = pass_question;
+                    lblQuestion.Text = countButton + "." + it.Substring(0, it.IndexOf("#"));
+                    life = subject.getLifeCorrectAnswer(pass_question);
+                    if (subject.verifyLifeOriontationExist(pass_question, answer1))
+                    {
+                        string[] answers_array = { answer1, answer2, answer3 };
+                        Random ran = new Random();
+                        int num = 0;
+                        num = ran.Next(0, 2);
+                        int num1 = ran.Next(0, 2);
+                        int num2 = ran.Next(0, 2);
+                        if (num == num1)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[0];
+                        }
+                        else if (num == num2)
+                        {
+                            radAnswer1.Content = answers_array[0];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[2];
+                        }
+                        else if (num1 == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else if (num == num1 && num == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else
+                        {
+                            radAnswer1.Content = answers_array[num];
+                            radAnswer2.Content = answers_array[num1];
+                            radAnswer3.Content = answers_array[num2];
+                        }
+                    }
+
+                }
+                else if (table.Equals("Physics"))
+                {
+                    subjects = subjectModel.getPhysicsQuestions1(grade);
+                    int totalItems = subjects.Count();
+                    int count = 0;
+                    names = new string[subjects.Count()];
+                    foreach (var i in subjects)
+                    {
+                        names[count] = i.QUESTION + "#" + i.ANSWER + "#" + i.ANSWER1 + "#" + i.ANSWER2;
+                        count++;
+                    }
+                    combo.SelectedIndex.ToString();
+                    string answer1 = string.Empty, answer2 = string.Empty, answer3 = string.Empty;
+                    if (readQuestion.Equals(number)) { }
+                    number = random.Next(0, totalItems);
+                    readQuestion = number;
+                    it = names[number];
+                    names = it.Split('#');
+                    answer1 = names[1];
+                    answer2 = names[2];
+                    answer3 = names[3];
+                    pass_question = it.Substring(0, it.IndexOf("#"));
+                    myQuestion = pass_question;
+                    lblQuestion.Text = countButton + ".  " + it.Substring(0, it.IndexOf("#"));
+                    physics = subject.getPhysicsCorrectAnswer(pass_question);
+                    if (subject.verifyPhysicsExist(pass_question, answer1))
+                    {
+                        string[] answers_array = { answer1, answer2, answer3 };
+                        Random ran = new Random();
+                        int num = 0;
+                        num = ran.Next(0, 2);
+                        int num1 = ran.Next(0, 2);
+                        int num2 = ran.Next(0, 2);
+                        if (num == num1)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[0];
+                        }
+                        else if (num == num2)
+                        {
+                            radAnswer1.Content = answers_array[0];
+                            radAnswer2.Content = answers_array[1];
+                            radAnswer3.Content = answers_array[2];
+                        }
+                        else if (num1 == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else if (num == num1 && num == num2)
+                        {
+                            radAnswer1.Content = answers_array[2];
+                            radAnswer2.Content = answers_array[0];
+                            radAnswer3.Content = answers_array[1];
+                        }
+                        else
+                        {
+                            radAnswer1.Content = answers_array[num];
+                            radAnswer2.Content = answers_array[num1];
+                            radAnswer3.Content = answers_array[num2];
+                        }
+                    }
 
                 }
             }
@@ -201,13 +820,165 @@ namespace StudyApp
             radAnswer1.IsEnabled = true;
             radAnswer2.IsEnabled = true;
             radAnswer3.IsEnabled = true;
-            if(countButton > 9)
+            if (combo.SelectedItem != null)
             {
-                messageBox("Test Completed :Total marks "+marks +"%");
-                subject.removeAll();
-                module.populateEnglishTables();
+                selItem = int.Parse(combo.SelectedItem.ToString());
+                if (countButton > selItem)
+                {
+                    btnNext.Content = "Finish";
+                    if (marks > 0)
+                    {
+                        if (selItem == 10)
+                        {
+                            marks = (marks / 10) * 100;
+                        }
+                        else if (selItem == 20)
+                        {
+                            marks = (marks / 20) * 100;
+                        }
+                        else if (selItem == 30)
+                        {
+                            marks = (marks / 30) * 100;
+                        }
+                        else if (selItem == 50)
+                        {
+                            marks = (marks / 50) * 100;
+                        }
+                    }
+                    string message = "";
+                    if (marks < 50)
+                    {
+                        message = "Sorry You failed the test";
+
+                    }
+                    else if (marks >= 50 && marks < 75)
+                    {
+                        message = "You passed the test with an avarage score";
+                    }
+                    else if (marks >= 75)
+                    {
+                        message = "Passed with Distinction";
+                    }
+                    messageBox("Complete!!! :Total marks " + marks + "% " + message);
+                    if (table.Equals("Accounting"))
+                    {
+                        subject.removeAllAccountingQuestions(); module.pupulateAccountingTable();
+                    }
+                    else if (table.Equals("Business"))
+                    {
+                        subject.removeAllBusinessQuestions(); module.pupulateBusinessTable();
+                    }
+                    else if (table.Equals("English"))
+                    {
+                        subject.removeAll(); module.populateEnglishTables();
+                    }
+                    else if (table.Equals("Geography"))
+                    {
+                        subject.removeAllGeographyQuestions(); module.pupulateGeographyTable();
+                    }
+                    else if (table.Equals("History"))
+                    {
+                        subject.removeAllHistoryQuestions(); module.pupulateHistoryTable();
+                    }
+                    else if (table.Equals("Life"))
+                    {
+                        subject.removeAllLifeQuestions(); module.pupulateLifeOrientationTable();
+                    }
+                    else if (table.Equals("Maths"))
+                    {
+                        subject.removeAllMathsQuestions(); module.pupulateMathsTable();
+                    }
+                    else if (table.Equals("Physics"))
+                    {
+                        subject.removeAllPhysicsQuestions(); module.pupulatePhysicsTable();
+                    }
+                    btnNext.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    lblQuestion.Text = "";
+                    btnFinish.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                    radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                }
             }
-            //subject.remove(pass_question);
+            else
+            {
+                if (countButton > 10)
+                {
+                    btnNext.Content = "Finish";
+                    if (marks > 0)
+                    {
+                        if (selItem == 10)
+                        {
+                            marks = (marks / 10) * 100;
+                        }
+                    }
+                    string message = "";
+                    if (marks < 50)
+                    {
+                        message = "Sorry You failed the test";
+
+                    }
+                    else if (marks >= 50 && marks < 75)
+                    {
+                        message = "You passed the test with an avarage mark";
+                    }
+                    else if (marks >= 75)
+                    {
+                        message = "Passed with Distinction";
+                    }
+                    double store = marks = (marks / 10) * 100;
+                    messageBox("Complete!!! :Total marks " + store + "% ");
+
+                    btnNext.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    lblQuestion.Text = "";
+                    btnFinish.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                    radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    if (table.Equals("Accounting"))
+                    {
+                        subject.removeAllAccountingQuestions(); module.pupulateAccountingTable();
+                    }
+                    else if (table.Equals("Business"))
+                    {
+                        subject.removeAllBusinessQuestions(); module.pupulateBusinessTable();
+                    }
+                    else if (table.Equals("English"))
+                    {
+                        subject.removeAll(); module.populateEnglishTables();
+                    }
+                    else if (table.Equals("Geography"))
+                    {
+                        subject.removeAllGeographyQuestions(); module.pupulateGeographyTable();
+                    }
+                    else if (table.Equals("History"))
+                    {
+                        subject.removeAllHistoryQuestions(); module.pupulateHistoryTable();
+                    }
+                    else if (table.Equals("Life"))
+                    {
+                        subject.removeAllLifeQuestions(); module.pupulateLifeOrientationTable();
+                    }
+                    else if (table.Equals("Maths"))
+                    {
+                        subject.removeAllMathsQuestions(); module.pupulateMathsTable();
+                    }
+                    else if (table.Equals("Physics"))
+                    {
+                        subject.removeAllPhysicsQuestions(); module.pupulatePhysicsTable();
+                    }
+                }
+            }
+            countButton++;
+            subject.remove(pass_question);
+            subject.removeMaths(pass_question);
+            subject.removeBusiness(pass_question);
+            subject.removeAccounting(pass_question);
+            subject.removeGeography(pass_question);
+            subject.removeHistory(pass_question);
+            subject.removeLifeOrientation(pass_question);
+            subject.removePhysics(pass_question);
+            lblWrong.Text = "";
         }
 
         private void radAnswer2_Checked(object sender, RoutedEventArgs e)
@@ -216,13 +987,113 @@ namespace StudyApp
             radAnswer3.IsEnabled = false;
             if (radAnswer2.IsChecked == true)
             {
-                subject.remove(pass_question);
-                if (radAnswer2.Content.Equals(correct_answer.answer))
+                if (table.Equals("English"))
                 {
-                    marks = marks + 2;
+                    subject.remove(pass_question);
+                    if (radAnswer2.Content.Equals(correct_answer.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
                 }
+                else if (table.Equals("Maths"))
+                {
+                    subject.removeMaths(pass_question);
+                    if (radAnswer2.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Accounting"))
+                {
+                    subject.removeAccounting(pass_question);
+                    if (radAnswer2.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Business"))
+                {
+                    subject.removeBusiness(pass_question);
+                    if (radAnswer2.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Geography"))
+                {
+                    subject.removeGeography(pass_question);
+                    if (radAnswer2.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("History"))
+                {
+                    subject.removeHistory(pass_question);
+                    if (radAnswer2.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Life"))
+                {
+                    subject.removeGeography(pass_question);
+                    if (radAnswer2.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Physics"))
+                {
+                    subject.removePhysics(pass_question);
+                    if (radAnswer2.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+
             }
-            lblMarks.Text = marks + "%";
+            lblMarks.Text = "Mark: " + marks + "";
         }
 
         private void radAnswer3_Checked(object sender, RoutedEventArgs e)
@@ -231,13 +1102,120 @@ namespace StudyApp
             radAnswer1.IsEnabled = false;
             if (radAnswer3.IsChecked == true)
             {
-                subject.remove(pass_question);
-                if (radAnswer3.Content.Equals(correct_answer.answer))
+                if (table.Equals("English"))
                 {
-                    marks = marks + 2;
+                    subject.remove(pass_question);
+                    if (radAnswer3.Content.Equals(correct_answer.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
                 }
+                else if (table.Equals("Maths"))
+                {
+                    subject.removeMaths(pass_question);
+                    if (radAnswer3.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+
+                }
+                else if (table.Equals("Accounting"))
+                {
+                    subject.removeAccounting(pass_question);
+                    if (radAnswer3.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Business"))
+                {
+                    subject.removeBusiness(pass_question);
+                    if (radAnswer3.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Geography"))
+                {
+                    subject.removeGeography(pass_question);
+                    if (radAnswer3.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("History"))
+                {
+                    subject.removeHistory(pass_question);
+                    if (radAnswer3.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Life"))
+                {
+                    subject.removeGeography(pass_question);
+                    if (radAnswer3.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+                else if (table.Equals("Physics"))
+                {
+                    subject.removePhysics(pass_question);
+                    if (radAnswer3.Content.Equals(maths.answer))
+                    {
+                        marks = marks + 1;
+                        lblWrong.Text = "";
+                    }
+                    else
+                    {
+                        lblWrong.Text = "Wrong Answer";
+                    }
+                }
+
+                lblMarks.Text = "Mark: " + marks + "";
             }
-            lblMarks.Text = marks + "%";
+        }
+
+        private void combo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            combo.IsEnabled = false;
+            lblnumber.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
     }
 }

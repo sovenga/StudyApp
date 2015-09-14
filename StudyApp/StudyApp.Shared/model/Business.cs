@@ -14,5 +14,6 @@ namespace StudyApp.model
         public string answer2 { get; set; }
         public string answer3 { get; set; }
         public string GRADE { get; set; }
+        public string read { get; set; }
     }
 }
