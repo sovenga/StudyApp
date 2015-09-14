@@ -1,0 +1,1 @@
+D:\Mod\Documents\StudyApp\StudyApp\StudyApp.WindowsPhone\StudyApp.WindowsPhone.csproj;x86

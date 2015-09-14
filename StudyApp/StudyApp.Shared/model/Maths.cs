@@ -1,0 +1,18 @@
+﻿using SQLite;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace StudyApp.model
+{
+    class Maths
+    {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        public string question { get; set; }
+        public string answer { get; set; }
+        public string answer2 { get; set; }
+        public string answer3 { get; set; }
+        public string GRADE { get; set; }
+    }
+}

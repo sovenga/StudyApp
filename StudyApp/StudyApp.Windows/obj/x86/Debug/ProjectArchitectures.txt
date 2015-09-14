@@ -1,0 +1,1 @@
+D:\Mod\Documents\StudyApp\StudyApp\StudyApp.Windows\StudyApp.Windows.csproj;x86

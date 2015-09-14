@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="StudyApp.QuestionsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StudyApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets/book3.jpg" Stretch="Fill"/>
+        </Grid.Background>
+        <Button x:ConnectionId='1' Content="BACK" HorizontalAlignment="Left" Margin="70,30,0,0" VerticalAlignment="Top" Height="64" Width="210"                     />
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="76" Margin="73,584,0,0" VerticalAlignment="Top" Width="151"/>
+        <TextBlock x:Name="lblQuestion" HorizontalAlignment="Left" Margin="55,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Width="862" Height="115" Foreground="Black"/>
+        <TextBlock HorizontalAlignment="Left" Margin="97,141,0,0" TextWrapping="Wrap" Text="Answer this question below" VerticalAlignment="Top" Height="62" Width="468" FontSize="36" Foreground="#FF0C0000" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="928,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="62" Width="274" FontSize="36" Foreground="Black" FontWeight="Bold">
+        	<Run Text="Answ"/>
+        	<Run Text="ers"/>
+        </TextBlock>
+        <RadioButton x:ConnectionId='2' x:Name="radAnswer1" Content="" HorizontalAlignment="Left" Margin="949,222,0,0" VerticalAlignment="Top" Width="362" Foreground="Black"                             />
+        <TextBlock x:Name="lblMarks" HorizontalAlignment="Left" Margin="199,465,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Width="312" Height="82" FontFamily="Engravers MT"/>
+        <RadioButton x:ConnectionId='3' x:Name="radAnswer2" Content="" HorizontalAlignment="Left" Margin="949,280,0,0" VerticalAlignment="Top" Width="362" Foreground="Black"                             />
+        <RadioButton x:ConnectionId='4' x:Name="radAnswer3" Content="" HorizontalAlignment="Left" Margin="949,342,0,0" VerticalAlignment="Top" Width="362"                             />
+        <Button x:ConnectionId='5' x:Name="btnSubmit" Content="Submit Answer" HorizontalAlignment="Left" Margin="1051,485,0,0" VerticalAlignment="Top" Width="202" Height="53"                       />
+        <TextBlock x:Name="lblQuestions" HorizontalAlignment="Left" Margin="73,345,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="62" Width="468" FontSize="36" Foreground="#FF0C0000" FontWeight="Bold"/>
+        <Button x:ConnectionId='6' Content="Refresh" HorizontalAlignment="Left" Margin="828,36,0,0" VerticalAlignment="Top" Height="58" Width="233"                       />
+        <Button x:ConnectionId='7' x:Name="btnNext" Content="NEXT" HorizontalAlignment="Left" Margin="726,485,0,0" VerticalAlignment="Top" Width="214" Height="53"                      />
+        <TextBlock HorizontalAlignment="Left" Margin="76,485,0,0" TextWrapping="Wrap" Text="MARK:" VerticalAlignment="Top" FontSize="36"/>
+    </Grid>
+</Page>
+
