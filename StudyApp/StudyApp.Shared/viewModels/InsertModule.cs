@@ -44,6 +44,18 @@ namespace StudyApp.viewModels
             subject.addMathsSubject("(if X = 15 and Y = 10), What is the Difference of the two numbers", "5", "60", "15", "GRADE 6", "no");
             subject.addMathsSubject("(X = 11 and Y = 18) : What is the answer of (Y + 2) * X - 10", "20", "210", "21", "GRADE 6", "no");
             subject.addMathsSubject("(X = 16 : Y = 11 and Z = 0) : What is the answer of (X - Y) * 0 - 10 / Z", "Impossible equation", "-1", "0", "GRADE 6", "no");
+            subject.addMathsSubject("Jo bought a used car for $6000 and paid 15% deposit. How much did he still have to pay?", "Impossible equation", "-1", "0", "GRADE 6", "no");
+            subject.addMathsSubject("What is 8% of $600?", "Impossible equation", "-1", "0", "GRADE 6", "no");
+            subject.addMathsSubject("Which is the longest distance?", "Impossible equation", "-1", "0", "GRADE 6", "no");
+            subject.addMathsSubject("If 2 fligs make a flog and 3 flogs make a flug, how many fligs in 12 flugs?", "Impossible equation", "-1", "0", "GRADE 6", "no");
+            subject.addMathsSubject("Concrete is made by mixing screenings cement and sand in the ratio 3:1:15. How much sand would be needed to make 125 tonnes of concrete?", "Impossible equation", "-1", "0", "GRADE 6", "no");
+            subject.addMathsSubject("Two six sided dice are thrown together. What is the probability that a total of 10 is thrown?", "Impossible equation", "-1", "0", "GRADE 6", "no");
+            subject.addMathsSubject("Which inequation shows the following statement? x is 6 or less and more than – 5", "Impossible equation", "-1", "0", "GRADE 6", "no");
+            subject.addMathsSubject("Expand and simplify – 6 (2x – 3) – 11", "Impossible equation", "-1", "0", "GRADE 6", "no");
+            subject.addMathsSubject("−10 + −3 − −4 + 5 = ", "Impossible equation", "-1", "0", "GRADE 6", "no");
+            subject.addMathsSubject("−10 + −3 − −4 + 5 = ", "Impossible equation", "-1", "0", "GRADE 6", "no");
+            subject.addMathsSubject("−10 + −3 − −4 + 5 = ", "Impossible equation", "-1", "0", "GRADE 6", "no");
+            subject.addMathsSubject("−10 + −3 − −4 + 5 = ", "Impossible equation", "-1", "0", "GRADE 6", "no");
         }
         public void pupulateAccountingTable()
         {

@@ -20,13 +20,13 @@
     <AppXManifest Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-14T13:57:29.631</Modified>
+      <Modified>2015-09-15T09:41:10.198</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\StudyApp.Windows.exe">
       <PackagePath>StudyApp.Windows.exe</PackagePath>
-      <Modified>2015-09-14T13:59:20.130</Modified>
+      <Modified>2015-09-15T10:54:53.436</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\SQLite.WinRT81\3.8.10.2\Redist\Debug\x86\sqlite3.dll">
       <PackagePath>sqlite3.dll</PackagePath>
@@ -55,6 +55,14 @@
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\accounting.png">
       <PackagePath>Assets\accounting.png</PackagePath>
       <Modified>2015-09-08T09:13:27.003</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\blank.png">
+      <PackagePath>Assets\blank.png</PackagePath>
+      <Modified>2015-09-15T09:32:52.110</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\border.png">
+      <PackagePath>Assets\border.png</PackagePath>
+      <Modified>2015-09-15T09:40:16.791</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\busines.png">
       <PackagePath>Assets\busines.png</PackagePath>
@@ -100,6 +108,10 @@
       <PackagePath>Assets\background.jpg</PackagePath>
       <Modified>2015-09-08T09:11:04.334</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\blueBook.jpg">
+      <PackagePath>Assets\blueBook.jpg</PackagePath>
+      <Modified>2015-09-15T09:19:45.632</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\book page.jpg">
       <PackagePath>Assets\book page.jpg</PackagePath>
       <Modified>2015-09-08T07:52:20.795</Modified>
@@ -112,9 +124,25 @@
       <PackagePath>Assets\book3.jpg</PackagePath>
       <Modified>2015-09-08T08:16:00.943</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\book5.jpg">
+      <PackagePath>Assets\book5.jpg</PackagePath>
+      <Modified>2015-09-15T08:46:12.773</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\many.jpg">
       <PackagePath>Assets\many.jpg</PackagePath>
       <Modified>2015-09-08T08:36:06.543</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\one.jpg">
+      <PackagePath>Assets\one.jpg</PackagePath>
+      <Modified>2015-09-15T09:17:30.246</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\onePage.jpg">
+      <PackagePath>Assets\onePage.jpg</PackagePath>
+      <Modified>2015-09-15T09:10:29.768</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\pagebook.jpg">
+      <PackagePath>Assets\pagebook.jpg</PackagePath>
+      <Modified>2015-09-15T09:24:49.788</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
@@ -126,23 +154,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\DemoPage.xbf">
       <PackagePath>DemoPage.xbf</PackagePath>
-      <Modified>2015-09-09T07:31:38.043</Modified>
+      <Modified>2015-09-15T10:12:25.659</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2015-09-09T07:31:38.051</Modified>
+      <Modified>2015-09-15T10:12:25.663</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\QuestionsPage.xbf">
       <PackagePath>QuestionsPage.xbf</PackagePath>
-      <Modified>2015-09-14T13:57:28.908</Modified>
+      <Modified>2015-09-15T10:12:25.668</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\StudyApp.Windows.xr.xml">
       <PackagePath>StudyApp.Windows.xr.xml</PackagePath>
-      <Modified>2015-09-14T13:57:28.895</Modified>
+      <Modified>2015-09-15T09:59:07.603</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-09-14T13:57:29.301</Modified>
+      <Modified>2015-09-15T09:41:10.118</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

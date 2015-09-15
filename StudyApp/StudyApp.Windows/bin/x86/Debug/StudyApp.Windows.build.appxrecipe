@@ -41,6 +41,12 @@
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\accounting.png">
       <PackagePath>Assets\accounting.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\blank.png">
+      <PackagePath>Assets\blank.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\border.png">
+      <PackagePath>Assets\border.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\busines.png">
       <PackagePath>Assets\busines.png</PackagePath>
     </AppxPackagedFile>
@@ -74,6 +80,9 @@
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\background.jpg">
       <PackagePath>Assets\background.jpg</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\blueBook.jpg">
+      <PackagePath>Assets\blueBook.jpg</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\book page.jpg">
       <PackagePath>Assets\book page.jpg</PackagePath>
     </AppxPackagedFile>
@@ -83,8 +92,20 @@
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\book3.jpg">
       <PackagePath>Assets\book3.jpg</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\book5.jpg">
+      <PackagePath>Assets\book5.jpg</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\many.jpg">
       <PackagePath>Assets\many.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\one.jpg">
+      <PackagePath>Assets\one.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\onePage.jpg">
+      <PackagePath>Assets\onePage.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Shared\Assets\pagebook.jpg">
+      <PackagePath>Assets\pagebook.jpg</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>

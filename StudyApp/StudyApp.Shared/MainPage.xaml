@@ -8,9 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid HorizontalAlignment="Left" Height="748" VerticalAlignment="Top" Width="1346">
+        <Grid HorizontalAlignment="Left" Height="748" VerticalAlignment="Top" Width="1366">
             <Grid.Background>
-                <ImageBrush Stretch="Fill" ImageSource="Assets/many.jpg"/>
+                <ImageBrush Stretch="Fill" ImageSource="Assets/border.png"/>
             </Grid.Background>
             <Button x:Name="btnTryDemo" Content="START" HorizontalAlignment="Left" Margin="7,7,0,0" VerticalAlignment="Top" Width="308" Height="78" Click="btnTryDemo_Click" FontWeight="Bold" FontSize="22">
                 <Button.Background>

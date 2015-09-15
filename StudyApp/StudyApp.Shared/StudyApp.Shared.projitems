@@ -62,15 +62,22 @@
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\accounting.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\background.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\blank.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\blueBook.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\book page.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\book-and-mouse.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\book3.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\book5.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\border.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\busines.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\english.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\grade.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Logo.scale-240.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\many.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\maths.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\one.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\onePage.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\pagebook.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\SmallLogo.scale-240.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\SplashScreen.scale-240.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Square71x71Logo.scale-240.png" />

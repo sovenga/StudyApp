@@ -44,12 +44,14 @@ namespace StudyApp
         string[] question;
         string[] questionss, answers;
         string[] names = null;
+        DispatcherTimer time = new DispatcherTimer();
         private ObservableCollection<SubjectViewModel> questions = null;
         List<SubjectViewModel> myList;
         List<SubjectViewModel> subjectsList = null;
         Random random = new Random();
         string it;
         int pressed = 0;
+        int countTimer = 20, countTimer20 = 40, countTimer30 = 50, countTimer50 =65;
         string item;
         int readQuestion = 0;
         string myQuestion = null;
@@ -69,6 +71,7 @@ namespace StudyApp
             history = new History();
             life = new Life();
             physics = new Physics();
+            time.Start();
         }
 
         /// <summary>
@@ -92,6 +95,43 @@ namespace StudyApp
             radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             lblDisplayMark.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             btnFinish.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+        }
+
+        private void time_tick(object sender, object e)
+        {
+            countTimer--;
+            lblTimer.Text = countTimer.ToString();
+            if(countTimer == 0)
+            {
+                time.Stop();
+            }
+        }
+        private void time_tick20(object sender, object e)
+        {
+            countTimer20--;
+            lblTimer.Text = countTimer.ToString();
+            if (countTimer == 0)
+            {
+                time.Stop();
+            }
+        }
+        private void time_tick30(object sender, object e)
+        {
+            countTimer30--;
+            lblTimer.Text = countTimer.ToString();
+            if (countTimer == 0)
+            {
+                time.Stop();
+            }
+        }
+        private void time_tick50(object sender, object e)
+        {
+            countTimer50--;
+            lblTimer.Text = countTimer.ToString();
+            if (countTimer == 0)
+            {
+                time.Stop();
+            }
         }
         private async void messageBox(string msg)
         {
@@ -252,6 +292,8 @@ namespace StudyApp
 
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
+            time.Interval = new TimeSpan(0, 0, 0, 1);
+            
             radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Visible;
             radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Visible;
             radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Visible;
@@ -275,6 +317,7 @@ namespace StudyApp
             {
                 if (table.Equals("English"))
                 {
+
                     subjects = subjectModel.getEnglishQuestions1(grade);
                     subjectsList = subjectModel.getEnglishQuestion(grade);
                     myList = subjectModel.getEnglishQuestion(grade);
@@ -823,6 +866,7 @@ namespace StudyApp
             if (combo.SelectedItem != null)
             {
                 selItem = int.Parse(combo.SelectedItem.ToString());
+                time.Tick += time_tick;
                 if (countButton > selItem)
                 {
                     btnNext.Content = "Finish";
@@ -830,6 +874,7 @@ namespace StudyApp
                     {
                         if (selItem == 10)
                         {
+
                             marks = (marks / 10) * 100;
                         }
                         else if (selItem == 20)
@@ -1217,5 +1262,7 @@ namespace StudyApp
             combo.IsEnabled = false;
             lblnumber.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
+
+        
     }
 }

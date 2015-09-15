@@ -11,7 +11,7 @@
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="Assets/background.jpg"/>
         </Grid.Background>
-        <Grid HorizontalAlignment="Left" Height="575" Margin="25,76,0,0" VerticalAlignment="Top" Width="652">
+        <Grid HorizontalAlignment="Left" Height="575" Margin="25,76,0,0" VerticalAlignment="Top" Width="765">
             <Button x:ConnectionId='1' x:Name="btnEnglish" Content="" HorizontalAlignment="Left" Margin="77,85,0,0" VerticalAlignment="Top" Width="514"                          Height="72">
                 <Button.Background>
                     <ImageBrush Stretch="Fill" ImageSource="Assets/english.png"/>
