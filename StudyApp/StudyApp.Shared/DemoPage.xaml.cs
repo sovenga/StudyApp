@@ -34,10 +34,16 @@ namespace StudyApp
 
         private void linkQuit_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            comboList.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            lblSelectedGrade.Text = "No Grade Selected";
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (comboList.SelectedItem == null)
+            {
+                linkQuit.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblSelectedGrade.Text = "No Grade Selected";
+            }
             insert = new InsertModule();
             if (model.getEnglish() == null)
             {
@@ -105,6 +111,11 @@ namespace StudyApp
             string items = comboList.SelectedItem.ToString();
             selectedGrade = items;
             //messageBox("You clicked "+items);
+            comboList.Items.Remove(comboList.SelectedIndex);
+            comboList.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            lblSelectedGrade.Text = "Select " + selectedGrade + " Subjects Below";
+            linkQuit.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
         }
         private async void messageBox(string msg)
         {
@@ -138,6 +149,12 @@ namespace StudyApp
                 string item = comboList.SelectedItem.ToString() + ":Accounting";
                 this.Frame.Navigate(typeof(QuestionsPage), item);
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            comboList.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            //this.Frame.Navigate(typeof(DemoPage));
         }
     }
 }
