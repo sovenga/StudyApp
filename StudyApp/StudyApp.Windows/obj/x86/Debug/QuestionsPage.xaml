@@ -12,25 +12,30 @@
         <Grid.Background>
             <ImageBrush ImageSource="Assets/border.png" Stretch="Fill"/>
         </Grid.Background>
-        <Button x:ConnectionId='1' Content="BACK" HorizontalAlignment="Left" Margin="70,47,0,0" VerticalAlignment="Top" Height="64" Width="210"                     />
-        <TextBlock x:Name="lblQuestion" HorizontalAlignment="Left" Margin="81,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Width="580" Height="244" Foreground="#FFF7F1F1" FontFamily="Copperplate Gothic Bold"/>
-        <TextBlock x:Name="lblTop" HorizontalAlignment="Left" Margin="73,195,0,0" TextWrapping="Wrap" Text="Answer this question below" VerticalAlignment="Top" Height="30" Width="256" FontSize="16" Foreground="#FFF7F1F1" FontWeight="Bold" FontFamily="Global Monospace"/>
-        <TextBlock x:Name="lblTop2" HorizontalAlignment="Left" Margin="704,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="176" FontSize="16" Foreground="#FFF7F1F1" FontWeight="Bold" Text="Possible Solutions" FontFamily="Global Monospace"/>
-        <RadioButton x:ConnectionId='2' x:Name="radAnswer1" Content="" HorizontalAlignment="Left" Margin="701,222,0,0" VerticalAlignment="Top" Width="580" Foreground="#FFF7F1F1"                              FontFamily="Copperplate Gothic Bold" FontSize="18"/>
-        <TextBlock x:Name="lblMarks" HorizontalAlignment="Left" Margin="1016,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Width="320" Height="82" FontFamily="Engravers MT"/>
-        <RadioButton x:ConnectionId='3' x:Name="radAnswer2" Content="" HorizontalAlignment="Left" Margin="701,276,0,0" VerticalAlignment="Top" Width="580" Foreground="#FFF7F1F1"                              FontFamily="Copperplate Gothic Bold" FontSize="18"/>
-        <RadioButton x:ConnectionId='4' x:Name="radAnswer3" Content="" HorizontalAlignment="Left" Margin="701,326,0,0" VerticalAlignment="Top" Width="572"                              Foreground="#FFF7F1F1" FontFamily="Copperplate Gothic Bold" FontSize="18"/>
-        <Button x:ConnectionId='5' x:Name="btnFinish" Content="finish" HorizontalAlignment="Left" Margin="658,576,0,0" VerticalAlignment="Top" Width="202" Height="64"                       />
-        <Button x:ConnectionId='6' x:Name="btnStartAgain" Content="Start Again" HorizontalAlignment="Left" Margin="431,576,0,0" VerticalAlignment="Top" Height="64" Width="202"                       />
-        <Button x:ConnectionId='7' x:Name="btnNext" Content="Questions" HorizontalAlignment="Left" Margin="207,576,0,0" VerticalAlignment="Top" Width="202" Height="64"                      />
         <TextBlock x:Name="lblDisplayMark" HorizontalAlignment="Left" Margin="76,485,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36"/>
-        <ComboBox x:ConnectionId='8' x:Name="combo" HorizontalAlignment="Left" Margin="1125,50,0,0" VerticalAlignment="Top" Width="156" Height="38"                                          />
-        <TextBlock x:Name="lblnumber" HorizontalAlignment="Left" Margin="757,50,0,0" TextWrapping="Wrap" Text="Choose Number of questions" VerticalAlignment="Top" Height="38" Width="363" FontSize="16" Foreground="#FFF7EFEF" FontWeight="Bold" FontFamily="Engravers MT"/>
-        <TextBlock x:Name="lblTable" HorizontalAlignment="Left" Margin="306,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Width="421" Height="58" FontWeight="Bold" FontFamily="Engravers MT"/>
-        <TextBlock x:Name="lblWrong" HorizontalAlignment="Left" Margin="704,401,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="68" Width="433" Foreground="#FFF30834" FontSize="20" FontFamily="Perpetua Titling MT"/>
-        <TextBlock x:Name="lblTimer" HorizontalAlignment="Left" Margin="338,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="82" Width="673" FontSize="16" Foreground="#FFF7EFEF" FontFamily="Engravers MT" FontWeight="Bold"/>
-        <HyperlinkButton x:ConnectionId='9' x:Name="btnStartSession" Content="START SESSION" HorizontalAlignment="Left" Margin="14,583,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="20"                               Height="64"/>
-        <TextBlock x:Name="lblTimeRunning" HorizontalAlignment="Left" Margin="73,469,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="105" Width="1179" Foreground="#FFFBF3F4" FontFamily="Arial Black" FontSize="16"/>
+        <Grid HorizontalAlignment="Left" Height="728" Margin="0,10,20,0" VerticalAlignment="Top" Width="1346">
+            <Button x:ConnectionId='1' Content="BACK" HorizontalAlignment="Left" Margin="7,7,0,0" VerticalAlignment="Top" Height="41" Width="181"                     />
+            <TextBlock x:Name="lblQuestion" HorizontalAlignment="Left" Margin="28,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Width="494" Height="252" Foreground="#FFF7F1F1" FontFamily="Copperplate Gothic Bold"/>
+            <TextBlock x:Name="lblTop" HorizontalAlignment="Left" Margin="28,174,0,0" TextWrapping="Wrap" Text="Answer this question below" VerticalAlignment="Top" Height="32" Width="312" FontSize="16" Foreground="#FFF7F1F1" FontWeight="Bold" FontFamily="Global Monospace"/>
+            <TextBlock x:Name="lblTop2" HorizontalAlignment="Left" Margin="560,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="174" FontSize="16" Foreground="#FFF7F1F1" FontWeight="Bold" Text="Possible Solutions" FontFamily="Global Monospace"/>
+            <RadioButton x:ConnectionId='2' x:Name="radAnswer1" Content="" HorizontalAlignment="Left" Margin="557,202,0,0" VerticalAlignment="Top" Width="725" Foreground="#FFF7F1F1"                              FontFamily="Copperplate Gothic Bold" FontSize="18" Height="30"/>
+            <TextBlock x:Name="lblMarks" HorizontalAlignment="Left" Margin="1020,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Width="316" Height="85" FontFamily="Engravers MT"/>
+            <RadioButton x:ConnectionId='3' x:Name="radAnswer2" Content="" HorizontalAlignment="Left" Margin="557,258,0,0" VerticalAlignment="Top" Width="725" Foreground="#FFF7F1F1"                              FontFamily="Copperplate Gothic Bold" FontSize="18" Height="30"/>
+            <RadioButton x:ConnectionId='4' x:Name="radAnswer3" Content="" HorizontalAlignment="Left" Margin="557,310,0,0" VerticalAlignment="Top" Width="717"                              Foreground="#FFF7F1F1" FontFamily="Copperplate Gothic Bold" FontSize="18" Height="30"/>
+            <Button x:ConnectionId='5' x:Name="btnFinish" Content="finish" HorizontalAlignment="Left" Margin="647,569,0,0" VerticalAlignment="Top" Width="168" Height="67"                       />
+            <Button x:ConnectionId='6' x:Name="btnStartAgain" Content="Start Again" HorizontalAlignment="Left" Margin="447,569,0,0" VerticalAlignment="Top" Height="67" Width="170"                       />
+            <Button x:ConnectionId='7' x:Name="btnNext" Content="Questions" HorizontalAlignment="Left" Margin="239,569,0,0" VerticalAlignment="Top" Width="180" Height="67"                      />
+            <ComboBox x:ConnectionId='8' x:Name="combo" HorizontalAlignment="Left" Margin="1058,10,0,0" VerticalAlignment="Top" Width="216" Height="21"                                          />
+            <TextBlock x:Name="lblnumber" HorizontalAlignment="Left" Margin="694,6,0,0" TextWrapping="Wrap" Text="Choose Number of questions" VerticalAlignment="Top" Height="39" Width="359" FontSize="16" Foreground="#FFF7EFEF" FontWeight="Bold" FontFamily="Engravers MT"/>
+            <TextBlock x:Name="lblTable" HorizontalAlignment="Left" Margin="190,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Width="444" Height="35" FontWeight="Bold" FontFamily="Engravers MT"/>
+            <TextBlock x:Name="lblWrong" HorizontalAlignment="Left" Margin="560,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" Width="579" Foreground="#FFF30834" FontSize="20" FontFamily="Perpetua Titling MT"/>
+            <TextBlock x:Name="lblTimer" HorizontalAlignment="Left" Margin="349,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="85" Width="666" FontSize="16" Foreground="#FFF7EFEF" FontFamily="Engravers MT" FontWeight="Bold"/>
+            <HyperlinkButton x:ConnectionId='9' x:Name="btnStartSession" Content="START SESSION" HorizontalAlignment="Left" Margin="28,577,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="20"                               Height="66" Width="174"/>
+            <TextBlock x:Name="lblTimeRunning" HorizontalAlignment="Left" Margin="86,458,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="109" Width="967" Foreground="#FFFBF3F4" FontFamily="Arial Black" FontSize="16"/>
+            <TextBlock x:Name="lblTimeElapsed" HorizontalAlignment="Left" Margin="94,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="62" Width="1188" FontFamily="Bodoni MT Black" FontSize="36"/>
+            <ProgressBar x:Name="myProgressBar" HorizontalAlignment="Left" Height="64" Margin="45,694,0,-30" VerticalAlignment="Top" Width="406"/>
+            <TextBlock x:Name="lblWait" HorizontalAlignment="Left" Margin="1093,475,-10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Width="263" Height="102" Foreground="#FFF7F1F1" FontFamily="Copperplate Gothic Bold"/>
+        </Grid>
     </Grid>
 </Page>
 

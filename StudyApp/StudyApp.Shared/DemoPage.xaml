@@ -28,7 +28,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnBusiness" Content="Business" HorizontalAlignment="Left" Margin="77,249,0,0" VerticalAlignment="Top" Width="514" Height="59" FontFamily="Perpetua Titling MT">
+            <Button x:Name="btnPhysicalSciences" Content="physical science" HorizontalAlignment="Left" Margin="77,249,0,0" VerticalAlignment="Top" Width="514" Height="59" FontFamily="Perpetua Titling MT" Click="btnPhysicalSciences_Click">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
@@ -68,8 +68,8 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <HyperlinkButton x:Name="linkQuit" Content="CHANGE GRADE" HorizontalAlignment="Left" Margin="598,23,0,0" VerticalAlignment="Top" Click="linkQuit_Click" Width="154"/>
-            <ComboBox x:Name="comboList" HorizontalAlignment="Left" Margin="80,-78,0,0" VerticalAlignment="Top" Width="508" SelectionChanged="comboList_SelectionChanged" Height="83">
+            <HyperlinkButton x:Name="linkQuit" Content="CHANGE GRADE" HorizontalAlignment="Left" Margin="452,40,0,0" VerticalAlignment="Top" Click="linkQuit_Click" Width="153"/>
+            <ComboBox x:Name="comboList" HorizontalAlignment="Left" Margin="80,-22,0,0" VerticalAlignment="Top" Width="508" SelectionChanged="comboList_SelectionChanged" Height="57">
                 <ComboBox.Background>
                     <ImageBrush Stretch="Fill" ImageSource="Assets/grade.png"/>
                 </ComboBox.Background>
@@ -83,6 +83,6 @@
                 </Button.Background>
             </Button>
         </Grid>
-        <TextBlock x:Name="lblSelectedGrade" HorizontalAlignment="Left" Margin="111,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="497" FontSize="18" FontWeight="Bold" FontStyle="Italic" FontFamily="Engravers MT"/>
+        <TextBlock x:Name="lblSelectedGrade" HorizontalAlignment="Left" Margin="110,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="362" FontSize="18" FontWeight="Bold" FontStyle="Italic" FontFamily="Engravers MT"/>
     </Grid>
 </Page>

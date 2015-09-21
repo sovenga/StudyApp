@@ -61,6 +61,10 @@ namespace StudyApp
             {
                 insert.pupulateAccountingTable();
             }
+            if (model.getPhysics() == null)
+            {
+                insert.pupulatePhysicsTable();
+            }
             comboList.Items.Add("GRADE 1");
             comboList.Items.Add("GRADE 2");
             comboList.Items.Add("GRADE 3");
@@ -155,6 +159,20 @@ namespace StudyApp
         {
             comboList.Visibility = Windows.UI.Xaml.Visibility.Visible;
             //this.Frame.Navigate(typeof(DemoPage));
+        }
+
+        private void btnPhysicalSciences_Click(object sender, RoutedEventArgs e)
+        {
+            if (comboList.SelectedItem == null)
+            {
+
+                messageBox("You must select the grade first");
+            }
+            else
+            {
+                string item = comboList.SelectedItem.ToString() + ":Physics";
+                this.Frame.Navigate(typeof(QuestionsPage), item);
+            }
         }
     }
 }

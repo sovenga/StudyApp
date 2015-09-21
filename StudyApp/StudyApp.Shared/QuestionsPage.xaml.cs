@@ -93,7 +93,9 @@ namespace StudyApp
             combo.Items.Add("30");
             combo.Items.Add("50");
             radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            //lblWait.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            myProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             lblTop.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             lblTop2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
@@ -144,6 +146,10 @@ namespace StudyApp
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            //myProgressBar.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            lblWait.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            lblWait.Text = "Please wait";
+            //myProgressBar.Minimum = 50;
             if (table.Equals("Accounting"))
             {
                 subject.removeAllAccountingQuestions(); module.pupulateAccountingTable();
@@ -213,7 +219,7 @@ namespace StudyApp
                 else if (table.Equals("Accounting"))
                 {
                     subject.removeAccounting(pass_question);
-                    if (radAnswer1.Content.Equals(maths.answer))
+                    if (radAnswer1.Content.Equals(accounting.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -226,7 +232,7 @@ namespace StudyApp
                 else if (table.Equals("Business"))
                 {
                     subject.removeBusiness(pass_question);
-                    if (radAnswer1.Content.Equals(maths.answer))
+                    if (radAnswer1.Content.Equals(business.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -239,7 +245,7 @@ namespace StudyApp
                 else if (table.Equals("Geography"))
                 {
                     subject.removeGeography(pass_question);
-                    if (radAnswer1.Content.Equals(maths.answer))
+                    if (radAnswer1.Content.Equals(geography.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -252,7 +258,7 @@ namespace StudyApp
                 else if (table.Equals("History"))
                 {
                     subject.removeHistory(pass_question);
-                    if (radAnswer1.Content.Equals(maths.answer))
+                    if (radAnswer1.Content.Equals(history.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -265,7 +271,7 @@ namespace StudyApp
                 else if (table.Equals("Life"))
                 {
                     subject.removeGeography(pass_question);
-                    if (radAnswer1.Content.Equals(maths.answer))
+                    if (radAnswer1.Content.Equals(life.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -278,7 +284,7 @@ namespace StudyApp
                 else if (table.Equals("Physics"))
                 {
                     subject.removePhysics(pass_question);
-                    if (radAnswer1.Content.Equals(maths.answer))
+                    if (radAnswer1.Content.Equals(physics.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -336,7 +342,7 @@ namespace StudyApp
             btnStartAgain.Visibility = Windows.UI.Xaml.Visibility.Visible;
             if (countTimer == 0)
             {
-                messageBox("You have ran out of time ,your total mark = " + marks + "/" + 10);
+                lblTimeElapsed.Text = "You have ran out of time ,your total mark = " + marks + "/" + 10;
                 radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
@@ -347,7 +353,7 @@ namespace StudyApp
             }
             else if (countTimer20 == 0)
             {
-                messageBox("You have ran out of time ,your total mark = " + marks + "/" + 20);
+                lblTimeElapsed.Text = "You have ran out of time ,your total mark = " + marks + "/" + 20;
                 radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
@@ -370,7 +376,7 @@ namespace StudyApp
             }
             else if (countTimer50 == 0)
             {
-                messageBox("You have ran out of time ,your total mark = " + marks + "/" + 50);
+                lblTimeElapsed.Text = "You have ran out of time ,your total mark = " + marks + "/" + 50;
                 radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
@@ -1032,8 +1038,7 @@ namespace StudyApp
                     }
                     btnNext.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     lblQuestion.Text = "";
-                    lblTimeRunning.Text = "";
-                    btnFinish.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    btnFinish.Visibility = Windows.UI.Xaml.Visibility.Visible;
                     radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
@@ -1190,7 +1195,7 @@ namespace StudyApp
                 else if (table.Equals("Accounting"))
                 {
                     subject.removeAccounting(pass_question);
-                    if (radAnswer2.Content.Equals(maths.answer))
+                    if (radAnswer2.Content.Equals(accounting.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1203,7 +1208,7 @@ namespace StudyApp
                 else if (table.Equals("Business"))
                 {
                     subject.removeBusiness(pass_question);
-                    if (radAnswer2.Content.Equals(maths.answer))
+                    if (radAnswer2.Content.Equals(business.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1216,7 +1221,7 @@ namespace StudyApp
                 else if (table.Equals("Geography"))
                 {
                     subject.removeGeography(pass_question);
-                    if (radAnswer2.Content.Equals(maths.answer))
+                    if (radAnswer2.Content.Equals(geography.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1229,7 +1234,7 @@ namespace StudyApp
                 else if (table.Equals("History"))
                 {
                     subject.removeHistory(pass_question);
-                    if (radAnswer2.Content.Equals(maths.answer))
+                    if (radAnswer2.Content.Equals(history.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1241,8 +1246,8 @@ namespace StudyApp
                 }
                 else if (table.Equals("Life"))
                 {
-                    subject.removeGeography(pass_question);
-                    if (radAnswer2.Content.Equals(maths.answer))
+                    subject.removeLifeOrientation(pass_question);
+                    if (radAnswer2.Content.Equals(life.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1255,7 +1260,7 @@ namespace StudyApp
                 else if (table.Equals("Physics"))
                 {
                     subject.removePhysics(pass_question);
-                    if (radAnswer2.Content.Equals(maths.answer))
+                    if (radAnswer2.Content.Equals(physics.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1306,7 +1311,7 @@ namespace StudyApp
                 else if (table.Equals("Accounting"))
                 {
                     subject.removeAccounting(pass_question);
-                    if (radAnswer3.Content.Equals(maths.answer))
+                    if (radAnswer3.Content.Equals(accounting.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1319,7 +1324,7 @@ namespace StudyApp
                 else if (table.Equals("Business"))
                 {
                     subject.removeBusiness(pass_question);
-                    if (radAnswer3.Content.Equals(maths.answer))
+                    if (radAnswer3.Content.Equals(business.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1332,7 +1337,7 @@ namespace StudyApp
                 else if (table.Equals("Geography"))
                 {
                     subject.removeGeography(pass_question);
-                    if (radAnswer3.Content.Equals(maths.answer))
+                    if (radAnswer3.Content.Equals(geography.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1345,7 +1350,7 @@ namespace StudyApp
                 else if (table.Equals("History"))
                 {
                     subject.removeHistory(pass_question);
-                    if (radAnswer3.Content.Equals(maths.answer))
+                    if (radAnswer3.Content.Equals(history.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1358,7 +1363,7 @@ namespace StudyApp
                 else if (table.Equals("Life"))
                 {
                     subject.removeGeography(pass_question);
-                    if (radAnswer3.Content.Equals(maths.answer))
+                    if (radAnswer3.Content.Equals(life.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1371,7 +1376,7 @@ namespace StudyApp
                 else if (table.Equals("Physics"))
                 {
                     subject.removePhysics(pass_question);
-                    if (radAnswer3.Content.Equals(maths.answer))
+                    if (radAnswer3.Content.Equals(physics.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";

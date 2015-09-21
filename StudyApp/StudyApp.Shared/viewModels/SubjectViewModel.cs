@@ -134,6 +134,14 @@ namespace StudyApp.viewModels
                 return q;
             }
         }
+        public Physics getPhysics()
+        {
+            using (var db = new SQLite.SQLiteConnection(app.dbPath))
+            {
+                var q = db.Query<Physics>("select * from Physics").FirstOrDefault();
+                return q;
+            }
+        }
         public void addAccountingSubject(string question, string answer, string answer1, string answer2, string grade, string read)
         {
             using (var db = new SQLite.SQLiteConnection(app.dbPath))

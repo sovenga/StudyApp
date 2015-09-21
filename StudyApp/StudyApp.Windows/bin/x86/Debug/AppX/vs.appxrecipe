@@ -20,13 +20,13 @@
     <AppXManifest Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-15T09:41:10.198</Modified>
+      <Modified>2015-09-21T10:01:21.552</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\StudyApp.Windows.exe">
       <PackagePath>StudyApp.Windows.exe</PackagePath>
-      <Modified>2015-09-17T10:05:25.340</Modified>
+      <Modified>2015-09-21T10:45:18.291</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\SQLite.WinRT81\3.8.10.2\Redist\Debug\x86\sqlite3.dll">
       <PackagePath>sqlite3.dll</PackagePath>
@@ -146,31 +146,31 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2015-09-09T07:10:15.843</Modified>
+      <Modified>2015-09-21T10:01:19.498</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\BlankPage.xbf">
       <PackagePath>BlankPage.xbf</PackagePath>
-      <Modified>2015-09-09T07:10:15.845</Modified>
+      <Modified>2015-09-21T10:01:19.498</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\DemoPage.xbf">
       <PackagePath>DemoPage.xbf</PackagePath>
-      <Modified>2015-09-17T08:36:32.983</Modified>
+      <Modified>2015-09-21T10:43:48.591</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2015-09-15T10:12:25.663</Modified>
+      <Modified>2015-09-21T10:01:19.501</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\QuestionsPage.xbf">
       <PackagePath>QuestionsPage.xbf</PackagePath>
-      <Modified>2015-09-17T08:36:32.985</Modified>
+      <Modified>2015-09-21T10:45:18.020</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\StudyApp.Windows.xr.xml">
       <PackagePath>StudyApp.Windows.xr.xml</PackagePath>
-      <Modified>2015-09-17T08:36:32.856</Modified>
+      <Modified>2015-09-21T10:07:11.863</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-09-15T09:41:10.118</Modified>
+      <Modified>2015-09-21T10:01:20.773</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
