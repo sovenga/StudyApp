@@ -27,7 +27,7 @@ namespace StudyApp
     /// </summary>
     public sealed partial class App : Application
     {
-    
+
         public string dbPath { get; set; }
         private SubjectViewModel model = null;
 #if WINDOWS_PHONE_APP
@@ -43,7 +43,7 @@ namespace StudyApp
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
-           
+
         }
 
         /// <summary>
@@ -73,15 +73,16 @@ namespace StudyApp
                     dbase.CreateTable<Life>();
                     dbase.CreateTable<Physics>();
                     dbase.CreateTable<Maths>();
-                   
+
                 }
-               
-                
+
+
             }
-            catch { 
-            
+            catch
+            {
+
             }
-            
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
