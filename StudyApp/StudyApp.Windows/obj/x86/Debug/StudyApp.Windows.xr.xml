@@ -107,6 +107,15 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Border">
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="BorderThickness" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Width" />
+    </RootType>
     <RootType FullName="StudyApp.QuestionsPage" />
   </Roots.RootTypes>
 </Roots>

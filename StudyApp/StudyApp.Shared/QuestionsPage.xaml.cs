@@ -83,6 +83,7 @@ namespace StudyApp
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+           
             btnNext.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
             item = e.Parameter as string;
@@ -1042,7 +1043,7 @@ namespace StudyApp
                     radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                }
+                } 
                 if (selItem == 10)
                 {
                     marks = (marks / 10) * 100;
@@ -1362,7 +1363,7 @@ namespace StudyApp
                 }
                 else if (table.Equals("Life"))
                 {
-                    subject.removeGeography(pass_question);
+                    subject.removeLifeOrientation(pass_question);
                     if (radAnswer3.Content.Equals(life.answer))
                     {
                         marks = marks + 1;
