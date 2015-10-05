@@ -36,7 +36,7 @@ namespace StudyApp
         Life life = null;
         Physics physics = null;
 
-        double marks = 0.0;
+        int marks = 0;
         List<string> list = new List<string>();
         private ObservableCollection<SubjectViewModel> subjects = null;
         private SubjectViewModel subject = null;
@@ -51,7 +51,7 @@ namespace StudyApp
         Random random = new Random();
         string it;
         int pressed = 0;
-        int countTimer = 20, countTimer20 = 40, countTimer30 = 50, countTimer50 =65;
+        int countTimer = 100, countTimer20 = 200, countTimer30 = 350, countTimer50 = 450;
         string item;
         int readQuestion = 0;
         string myQuestion = null;
@@ -59,6 +59,8 @@ namespace StudyApp
         int countButton = 1;
         string selectedItem = "";
         string table = "";
+        string myGrade = "";
+        int selItem = 0;
         public QuestionsPage()
         {
             this.InitializeComponent();
@@ -72,6 +74,7 @@ namespace StudyApp
             life = new Life();
             physics = new Physics();
             time.Start();
+
         }
 
         /// <summary>
@@ -81,58 +84,36 @@ namespace StudyApp
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            lblTop.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            lblTop2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            progressRing.IsActive = false;
+            // btnNext.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            lblPopup.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             item = e.Parameter as string;
             table = item.Substring(item.IndexOf(":") + 1);
-            lblTable.Text = table + " Studdy Questions";
+            myGrade = item.Substring(0, item.IndexOf(":"));
+            lblTable.Text = table + " Studdy Questions for " + myGrade;
             combo.Items.Add("10");
             combo.Items.Add("20");
             combo.Items.Add("30");
             combo.Items.Add("50");
             radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            //lblWait.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            myProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            lblTop.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            lblTop2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             lblDisplayMark.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            btnFinish.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            // btnFinish.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            //btnStartAgain.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            //btnStartAgain.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            // lblTotalMarks.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            btnFinish.IsEnabled = false;
+            btnStartAgain.IsEnabled = false;
+            btnNext.IsEnabled = false;
         }
 
-        private void time_tick(object sender, object e)
-        {
-            countTimer--;
-            lblTimer.Text = countTimer.ToString();
-            if(countTimer == 0)
-            {
-                time.Stop();
-            }
-        }
-        private void time_tick20(object sender, object e)
-        {
-            countTimer20--;
-            lblTimer.Text = countTimer.ToString();
-            if (countTimer == 0)
-            {
-                time.Stop();
-            }
-        }
-        private void time_tick30(object sender, object e)
-        {
-            countTimer30--;
-            lblTimer.Text = countTimer.ToString();
-            if (countTimer == 0)
-            {
-                time.Stop();
-            }
-        }
-        private void time_tick50(object sender, object e)
-        {
-            countTimer50--;
-            lblTimer.Text = countTimer.ToString();
-            if (countTimer == 0)
-            {
-                time.Stop();
-            }
-        }
+
+
         private async void messageBox(string msg)
         {
             var dialog = new Windows.UI.Popups.MessageDialog(msg);
@@ -171,10 +152,65 @@ namespace StudyApp
                     break;
             }
         }
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void startAgainCommandhandler(IUICommand cmd)
         {
+            var lable = cmd.Label;progressRing.IsActive = true;
+            switch (lable)
+            {
+                case "Yes":
+                    
+                    //myProgressBar.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                    lblWait.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                   
+                    //myProgressBar.Minimum = 50;
+                    if (table.Equals("Accounting"))
+                    {
+                        subject.removeAllAccountingQuestions(); module.pupulateAccountingTable();
+                    }
+                    else if (table.Equals("Business"))
+                    {
+                        subject.removeAllBusinessQuestions(); module.pupulateBusinessTable();
+                    }
+                    else if (table.Equals("English"))
+                    {
+                        subject.removeAll(); module.populateEnglishTables();
+                    }
+                    else if (table.Equals("Geography"))
+                    {
+                        subject.removeAllGeographyQuestions(); module.pupulateGeographyTable();
+                    }
+                    else if (table.Equals("History"))
+                    {
+                        subject.removeAllHistoryQuestions(); module.pupulateHistoryTable();
+                    }
+                    else if (table.Equals("Life"))
+                    {
+                        subject.removeAllLifeQuestions(); module.pupulateLifeOrientationTable();
+                    }
+                    else if (table.Equals("Maths"))
+                    {
+                        subject.removeAllMathsQuestions(); module.pupulateMathsTable();
+                    }
+                    else if (table.Equals("Physics"))
+                    {
+                        subject.removeAllPhysicsQuestions(); module.pupulatePhysicsTable();
+                    }
+                    this.Frame.Navigate(typeof(QuestionsPage), item);
+                    break;
+                case "No":
+                    //progressRing.IsActive = true;
+                    break;
+            }
+        }
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+           
+            var dialog = new MessageDialog("Start Again");
+            //dialog.Commands.Add(new UICommand(, new UICommandInvokedHandler(startAgainCommandhandler)));
+            dialog.Commands.Add(new UICommand("Yes", new UICommandInvokedHandler(startAgainCommandhandler)));
+            dialog.Commands.Add(new UICommand("No", new UICommandInvokedHandler(startAgainCommandhandler)));
+            await dialog.ShowAsync();
 
-            this.Frame.Navigate(typeof(QuestionsPage), item);
         }
         private void radAnswer1_Checked(object sender, RoutedEventArgs e)
         {
@@ -211,7 +247,7 @@ namespace StudyApp
                 else if (table.Equals("Accounting"))
                 {
                     subject.removeAccounting(pass_question);
-                    if (radAnswer1.Content.Equals(maths.answer))
+                    if (radAnswer1.Content.Equals(accounting.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -224,7 +260,7 @@ namespace StudyApp
                 else if (table.Equals("Business"))
                 {
                     subject.removeBusiness(pass_question);
-                    if (radAnswer1.Content.Equals(maths.answer))
+                    if (radAnswer1.Content.Equals(business.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -237,7 +273,7 @@ namespace StudyApp
                 else if (table.Equals("Geography"))
                 {
                     subject.removeGeography(pass_question);
-                    if (radAnswer1.Content.Equals(maths.answer))
+                    if (radAnswer1.Content.Equals(geography.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -250,7 +286,7 @@ namespace StudyApp
                 else if (table.Equals("History"))
                 {
                     subject.removeHistory(pass_question);
-                    if (radAnswer1.Content.Equals(maths.answer))
+                    if (radAnswer1.Content.Equals(history.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -263,7 +299,7 @@ namespace StudyApp
                 else if (table.Equals("Life"))
                 {
                     subject.removeGeography(pass_question);
-                    if (radAnswer1.Content.Equals(maths.answer))
+                    if (radAnswer1.Content.Equals(life.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -276,7 +312,7 @@ namespace StudyApp
                 else if (table.Equals("Physics"))
                 {
                     subject.removePhysics(pass_question);
-                    if (radAnswer1.Content.Equals(maths.answer))
+                    if (radAnswer1.Content.Equals(physics.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -289,18 +325,113 @@ namespace StudyApp
             }
             lblMarks.Text = "Mark: " + marks + "";
         }
-
+        private void time_tick(object sender, object e)
+        {
+            countTimer--;
+            lblTimer.Text = "Remaining Seconds " + countTimer.ToString();
+            if (countTimer == 0)
+            {
+                time.Stop();
+            }
+        }
+        private void time_tick20(object sender, object e)
+        {
+            countTimer20--;
+            lblTimer.Text = "Remaining Seconds " + countTimer20.ToString();
+            if (countTimer20 == 0)
+            {
+                time.Stop();
+            }
+        }
+        private void time_tick30(object sender, object e)
+        {
+            countTimer30--;
+            lblTimer.Text = "Remaining Seconds " + countTimer30.ToString();
+            if (countTimer30 == 0)
+            {
+                time.Stop();
+            }
+        }
+        private void time_tick50(object sender, object e)
+        {
+            countTimer50--;
+            lblTimer.Text = "Remaining Seconds " + countTimer50.ToString();
+            if (countTimer50 == 0)
+            {
+                time.Stop();
+            }
+        }
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
-            time.Interval = new TimeSpan(0, 0, 0, 1);
-            
+            lblPopup.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            lblNumberOfQuestions.Text = selItem + " questions will be generated randomly";
+            btnFinish.IsEnabled = true;
+            btnStartAgain.IsEnabled = true;
+            //lblTotalMarks.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            if (countTimer < 5 || countTimer < 15 || countTimer20 < 61 || countTimer30 < 75 || countTimer50 < 120)
+            {
+                lblTimeRunning.Text = "Dear learner, you are running out of time";
+            }
+            btnStartAgain.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            if (countTimer == 0)
+            {
+                messageBox("You have ran out of time ,your total mark = " + marks + "/" + 10);
+                lblTimeElapsed.Text = "You have ran out of time ,your total mark = " + marks + "/" + 10;
+                radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblTop.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblTop2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblQuestion.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                btnStartAgain.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
+            else if (countTimer20 == 0)
+            {
+                messageBox("You have ran out of time ,your total mark = " + marks + "/" + 20);
+                lblTimeElapsed.Text = "You have ran out of time ,your total mark = " + marks + "/" + 20;
+                radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblTop.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblTop2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblQuestion.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                btnFinish.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
+            else if (countTimer30 == 0)
+            {
+                messageBox("You have ran out of time ,your total mark = " + marks + "/" + 30);
+                lblTimeElapsed.Text = "You have ran out of time ,your total mark = " + marks + "/" + 30;
+                radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblTop.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblTop2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblQuestion.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                btnFinish.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                btnNext.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            }
+            else if (countTimer50 == 0)
+            {
+                messageBox("You have ran out of time ,your total mark = " + marks + "/" + 50);
+                lblTimeElapsed.Text = "You have ran out of time ,your total mark = " + marks + "/" + 50;
+                radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblTop.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblTop2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblQuestion.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                btnFinish.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                btnNext.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            }
             radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Visible;
             radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Visible;
             radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Visible;
             lblDisplayMark.Visibility = Windows.UI.Xaml.Visibility.Visible;
             lblTop.Visibility = Windows.UI.Xaml.Visibility.Visible;
             lblTop2.Visibility = Windows.UI.Xaml.Visibility.Visible;
-            int selItem = 0;
+            btnFinish.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            btnNext.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
             module = new InsertModule();
             int number = 0;
             myList = new List<SubjectViewModel>();
@@ -863,10 +994,12 @@ namespace StudyApp
             radAnswer1.IsEnabled = true;
             radAnswer2.IsEnabled = true;
             radAnswer3.IsEnabled = true;
+            // time.Interval = new TimeSpan(0, 0, 0, 1);
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             if (combo.SelectedItem != null)
             {
                 selItem = int.Parse(combo.SelectedItem.ToString());
-                time.Tick += time_tick;
+                //messageBox("Selected is " + selItem);
                 if (countButton > selItem)
                 {
                     btnNext.Content = "Finish";
@@ -877,34 +1010,43 @@ namespace StudyApp
 
                             marks = (marks / 10) * 100;
                         }
-                        else if (selItem == 20)
+                        if (selItem == 20)
                         {
                             marks = (marks / 20) * 100;
                         }
-                        else if (selItem == 30)
+                        if (selItem == 30)
                         {
                             marks = (marks / 30) * 100;
                         }
-                        else if (selItem == 50)
+                        if (selItem == 50)
                         {
                             marks = (marks / 50) * 100;
                         }
                     }
+                    time.Stop();
+                    ////////////////////////////////////////////////////////////////////////////////////////
+
                     string message = "";
                     if (marks < 50)
                     {
-                        message = "Sorry You failed the test";
-
+                        // message = "Sorry You failed the test";
+                        lblTotalMarks.Text = "Complete!!! :Total marks " + marks + "% ";
+                        //lblTotalMarks.Text = message;
                     }
                     else if (marks >= 50 && marks < 75)
                     {
                         message = "You passed the test with an avarage score";
+                        lblTotalMarks.Text = "Complete!!! :Total marks " + marks + "% ";
                     }
                     else if (marks >= 75)
                     {
                         message = "Passed with Distinction";
+                        lblTotalMarks.Text = "Complete!!! :Total marks " + marks + "% ";
+
                     }
-                    messageBox("Complete!!! :Total marks " + marks + "% " + message);
+                    lblNumberOfQuestions.Visibility = Windows.UI.Xaml.Visibility.Collapsed;//lblTotalMarks.Text = message;
+                    //messageBox("Complete!!! :Total marks " + marks + "% " + message);
+                    //lblTotalMarks.Text = "Complete!!! :Total marks " + marks + "% " + message;
                     if (table.Equals("Accounting"))
                     {
                         subject.removeAllAccountingQuestions(); module.pupulateAccountingTable();
@@ -944,36 +1086,44 @@ namespace StudyApp
                     radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 }
+
             }
             else
             {
+                lblNumberOfQuestions.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 if (countButton > 10)
                 {
+                    time.Stop();
                     btnNext.Content = "Finish";
                     if (marks > 0)
                     {
                         if (selItem == 10)
                         {
                             marks = (marks / 10) * 100;
+
                         }
                     }
                     string message = "";
                     if (marks < 50)
                     {
                         message = "Sorry You failed the test";
+                        lblTotalMarks.Text = "Complete!!! :Total marks " + marks + "% ";
 
                     }
                     else if (marks >= 50 && marks < 75)
                     {
                         message = "You passed the test with an avarage mark";
+                        lblTotalMarks.Text = "Complete!!! :Total marks " + marks + "% ";
                     }
                     else if (marks >= 75)
                     {
                         message = "Passed with Distinction";
+                        lblTotalMarks.Text = "Complete!!! :Total marks " + marks + "% ";
                     }
                     double store = marks = (marks / 10) * 100;
-                    messageBox("Complete!!! :Total marks " + store + "% ");
-
+                    //messageBox("Complete!!! :Total marks " + store + "% ");
+                    //lblTotalMarks.Text = "Complete!!! :Total marks " + store + "% "+message;
+                    lblNumberOfQuestions.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     btnNext.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     lblQuestion.Text = "";
                     btnFinish.Visibility = Windows.UI.Xaml.Visibility.Visible;
@@ -1013,6 +1163,22 @@ namespace StudyApp
                         subject.removeAllPhysicsQuestions(); module.pupulatePhysicsTable();
                     }
                 }
+            }
+            /*if (!(radAnswer1.IsChecked == true) || !(radAnswer2.IsChecked == true) || !(radAnswer3.IsChecked == true))
+            {
+                messageBox("You have to select at least one of the answers");
+            }*/
+            if (countTimer == 0 || countTimer20 == 0 || countTimer30 == 0 || countTimer50 == 0)
+            {
+                lblQuestion.Text = "";
+                lblTop.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblTop2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                radAnswer1.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                radAnswer2.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                radAnswer3.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                lblTimeRunning.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                btnNext.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                time.Stop();
             }
             countButton++;
             subject.remove(pass_question);
@@ -1024,6 +1190,9 @@ namespace StudyApp
             subject.removeLifeOrientation(pass_question);
             subject.removePhysics(pass_question);
             lblWrong.Text = "";
+
+
+
         }
 
         private void radAnswer2_Checked(object sender, RoutedEventArgs e)
@@ -1061,7 +1230,7 @@ namespace StudyApp
                 else if (table.Equals("Accounting"))
                 {
                     subject.removeAccounting(pass_question);
-                    if (radAnswer2.Content.Equals(maths.answer))
+                    if (radAnswer2.Content.Equals(accounting.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1074,7 +1243,7 @@ namespace StudyApp
                 else if (table.Equals("Business"))
                 {
                     subject.removeBusiness(pass_question);
-                    if (radAnswer2.Content.Equals(maths.answer))
+                    if (radAnswer2.Content.Equals(business.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1087,7 +1256,7 @@ namespace StudyApp
                 else if (table.Equals("Geography"))
                 {
                     subject.removeGeography(pass_question);
-                    if (radAnswer2.Content.Equals(maths.answer))
+                    if (radAnswer2.Content.Equals(geography.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1100,7 +1269,7 @@ namespace StudyApp
                 else if (table.Equals("History"))
                 {
                     subject.removeHistory(pass_question);
-                    if (radAnswer2.Content.Equals(maths.answer))
+                    if (radAnswer2.Content.Equals(history.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1112,8 +1281,8 @@ namespace StudyApp
                 }
                 else if (table.Equals("Life"))
                 {
-                    subject.removeGeography(pass_question);
-                    if (radAnswer2.Content.Equals(maths.answer))
+                    subject.removeLifeOrientation(pass_question);
+                    if (radAnswer2.Content.Equals(life.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1126,7 +1295,7 @@ namespace StudyApp
                 else if (table.Equals("Physics"))
                 {
                     subject.removePhysics(pass_question);
-                    if (radAnswer2.Content.Equals(maths.answer))
+                    if (radAnswer2.Content.Equals(physics.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1177,7 +1346,7 @@ namespace StudyApp
                 else if (table.Equals("Accounting"))
                 {
                     subject.removeAccounting(pass_question);
-                    if (radAnswer3.Content.Equals(maths.answer))
+                    if (radAnswer3.Content.Equals(accounting.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1190,7 +1359,7 @@ namespace StudyApp
                 else if (table.Equals("Business"))
                 {
                     subject.removeBusiness(pass_question);
-                    if (radAnswer3.Content.Equals(maths.answer))
+                    if (radAnswer3.Content.Equals(business.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1203,7 +1372,7 @@ namespace StudyApp
                 else if (table.Equals("Geography"))
                 {
                     subject.removeGeography(pass_question);
-                    if (radAnswer3.Content.Equals(maths.answer))
+                    if (radAnswer3.Content.Equals(geography.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1216,7 +1385,7 @@ namespace StudyApp
                 else if (table.Equals("History"))
                 {
                     subject.removeHistory(pass_question);
-                    if (radAnswer3.Content.Equals(maths.answer))
+                    if (radAnswer3.Content.Equals(history.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1229,7 +1398,7 @@ namespace StudyApp
                 else if (table.Equals("Life"))
                 {
                     subject.removeGeography(pass_question);
-                    if (radAnswer3.Content.Equals(maths.answer))
+                    if (radAnswer3.Content.Equals(life.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1242,7 +1411,7 @@ namespace StudyApp
                 else if (table.Equals("Physics"))
                 {
                     subject.removePhysics(pass_question);
-                    if (radAnswer3.Content.Equals(maths.answer))
+                    if (radAnswer3.Content.Equals(physics.answer))
                     {
                         marks = marks + 1;
                         lblWrong.Text = "";
@@ -1259,10 +1428,55 @@ namespace StudyApp
 
         private void combo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            lblNumberOfQuestions.Text = "Tap on start link to start test of " + combo.SelectedItem.ToString() + " questions";
             combo.IsEnabled = false;
             lblnumber.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
+        public void OpenpopUp()
+        {
 
-        
+        }
+        private void btnStartSession_Click(object sender, RoutedEventArgs e)
+        {
+            
+            lblPopup.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            //messageBox("Click on questions button to start generating the questions");
+            btnStartSession.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            //btnNext.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            btnNext.IsEnabled = true;
+            if (combo.SelectedItem != null)
+            {
+                selItem = int.Parse(combo.SelectedItem.ToString());
+
+
+                if (selItem == 10)
+                {
+                    time.Tick += time_tick;
+                    time.Interval = new TimeSpan(0, 0, 0, 1);
+                }
+                else if (selItem == 20)
+                {
+                    time.Tick += time_tick20;
+                    time.Interval = new TimeSpan(0, 0, 0, 1);
+                }
+                else if (selItem == 30)
+                {
+                    time.Tick += time_tick30;
+                    time.Interval = new TimeSpan(0, 0, 0, 1);
+                }
+                else if (selItem == 50)
+                {
+                    time.Tick += time_tick50;
+                    time.Interval = new TimeSpan(0, 0, 0, 1);
+                }
+            }
+            else
+            {
+                time.Tick += time_tick;
+                time.Interval = new TimeSpan(0, 0, 0, 1);
+            }
+        }
+
+
     }
 }

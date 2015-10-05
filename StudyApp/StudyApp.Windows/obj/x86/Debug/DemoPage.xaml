@@ -9,10 +9,14 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="Assets/border.png"/>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/purple.png"/>
         </Grid.Background>
-        <Grid HorizontalAlignment="Left" Height="677" Margin="26,81,0,0" VerticalAlignment="Top" Width="765">
-            <Button x:ConnectionId='1' x:Name="btnEnglish" Content="ENGLISH" HorizontalAlignment="Left" Margin="77,85,0,0" VerticalAlignment="Top" Width="514"                          Height="72" FontFamily="Perpetua Titling MT">
+        <Grid HorizontalAlignment="Center" Height="604" Margin="346,103,264,0" VerticalAlignment="Top" Width="756">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="36*"/>
+                <ColumnDefinition Width="49*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:ConnectionId='1' x:Name="btnEnglish" Content="ENGLISH" HorizontalAlignment="Left" Margin="77,41,0,0" VerticalAlignment="Top" Width="514"                          Height="54" FontFamily="Perpetua Titling MT" Grid.ColumnSpan="2">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
@@ -20,7 +24,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:ConnectionId='2' x:Name="btnMaths" Content="Mathematics" HorizontalAlignment="Left" Margin="77,176,0,0" VerticalAlignment="Top" Width="514"                        Height="56" FontFamily="Perpetua Titling MT">
+            <Button x:ConnectionId='2' x:Name="btnMaths" Content="Mathematics" HorizontalAlignment="Left" Margin="77,110,0,0" VerticalAlignment="Top" Width="514"                        Height="48" FontFamily="Perpetua Titling MT" Grid.ColumnSpan="2">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
@@ -28,7 +32,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnBusiness" Content="Business" HorizontalAlignment="Left" Margin="77,249,0,0" VerticalAlignment="Top" Width="514" Height="59" FontFamily="Perpetua Titling MT">
+            <Button x:ConnectionId='3' x:Name="btnPhysicalSciences" Content="physical science" HorizontalAlignment="Left" Margin="77,172,0,0" VerticalAlignment="Top" Width="514" Height="53" FontFamily="Perpetua Titling MT"                                   Grid.ColumnSpan="2">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
@@ -36,7 +40,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnAccounting" Content="Accounting" HorizontalAlignment="Left" Margin="77,307,0,0" VerticalAlignment="Top" Width="514" Height="54" FontFamily="Perpetua Titling MT">
+            <Button x:Name="btnAccounting" Content="Accounting" HorizontalAlignment="Left" Margin="77,242,0,0" VerticalAlignment="Top" Width="514" Height="54" FontFamily="Perpetua Titling MT" Grid.ColumnSpan="2">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
@@ -44,7 +48,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnLO" Content="LIFE ORIENTATION" HorizontalAlignment="Left" Margin="77,376,0,0" VerticalAlignment="Top" Width="514" FontFamily="Perpetua Titling MT" Height="58">
+            <Button x:Name="btnLO" Content="LIFE ORIENTATION" HorizontalAlignment="Left" Margin="77,308,0,0" VerticalAlignment="Top" Width="514" FontFamily="Perpetua Titling MT" Height="60" Grid.ColumnSpan="2">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
@@ -52,7 +56,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnGeog" Content="GEOGRAPHY" HorizontalAlignment="Left" Margin="77,448,0,0" VerticalAlignment="Top" Width="514" Height="58" FontFamily="Perpetua Titling MT">
+            <Button x:Name="btnGeog" Content="GEOGRAPHY" HorizontalAlignment="Left" Margin="77,387,0,0" VerticalAlignment="Top" Width="514" Height="58" FontFamily="Perpetua Titling MT" Grid.ColumnSpan="2">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
@@ -60,7 +64,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnSepedi" Content="SEPEDI/TSWANA" HorizontalAlignment="Left" Margin="77,523,0,0" VerticalAlignment="Top" Width="514" Height="57" FontFamily="Perpetua Titling MT">
+            <Button x:Name="btnSepedi" Content="SEPEDI/TSWANA" HorizontalAlignment="Left" Margin="77,462,0,0" VerticalAlignment="Top" Width="514" Height="57" FontFamily="Perpetua Titling MT" Grid.ColumnSpan="2">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
@@ -68,13 +72,13 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <HyperlinkButton x:ConnectionId='3' x:Name="linkQuit" Content="QUIT" HorizontalAlignment="Left" Margin="656,280,-7,0" VerticalAlignment="Top"                        Width="116"/>
-            <ComboBox x:ConnectionId='4' x:Name="comboList" HorizontalAlignment="Left" Margin="80,-78,0,0" VerticalAlignment="Top" Width="538"                                               Height="83">
+            <HyperlinkButton x:ConnectionId='4' x:Name="linkQuit" Content="CHANGE GRADE" HorizontalAlignment="Left" Margin="101,-9,0,0" VerticalAlignment="Top"                        Width="152" Grid.Column="1" Height="46"/>
+            <ComboBox x:ConnectionId='5' x:Name="comboList" HorizontalAlignment="Left" Margin="80,-60,0,0" VerticalAlignment="Top" Width="508"                                               Height="44" Grid.ColumnSpan="2">
                 <ComboBox.Background>
                     <ImageBrush Stretch="Fill" ImageSource="Assets/grade.png"/>
                 </ComboBox.Background>
             </ComboBox>
-            <Button Content="QUIT STUDDY" HorizontalAlignment="Left" Margin="77,598,0,0" VerticalAlignment="Top" Width="514" Height="58" FontFamily="Perpetua Titling MT">
+            <Button x:ConnectionId='6' Content="QUIT STUDDY" HorizontalAlignment="Left" Margin="77,535,0,0" VerticalAlignment="Top" Width="514" Height="58" FontFamily="Perpetua Titling MT"                      Grid.ColumnSpan="2">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
@@ -82,8 +86,8 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
+            <TextBlock x:Name="lblSelectedGrade" HorizontalAlignment="Left" Margin="80,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="353" FontSize="14" FontWeight="Bold" FontStyle="Italic" FontFamily="Engravers MT" Grid.ColumnSpan="2"/>
         </Grid>
-        <TextBlock x:Name="lblSelectedGrade" HorizontalAlignment="Left" Margin="111,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="59" Width="497" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
     </Grid>
 </Page>
 

@@ -65,8 +65,13 @@ namespace StudyApp
                 this.dbPath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "Studdy.db");
                 using (var dbase = new SQLite.SQLiteConnection(dbPath))
                 {
+                    dbase.CreateTable<Accounting>();
                     dbase.CreateTable<Business>();
                     dbase.CreateTable<English>();
+                    dbase.CreateTable<Geography>();
+                    dbase.CreateTable<History>();
+                    dbase.CreateTable<Life>();
+                    dbase.CreateTable<Physics>();
                     dbase.CreateTable<Maths>();
                    
                 }

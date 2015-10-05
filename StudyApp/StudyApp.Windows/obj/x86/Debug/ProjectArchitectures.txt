@@ -1,1 +1,1 @@
-D:\Mod\Documents\New folder\StudyApp\StudyApp\StudyApp.Windows\StudyApp.Windows.csproj;x86
+D:\Mod\Documents\Projects\StudyApp\StudyApp\StudyApp.Windows\StudyApp.Windows.csproj;x86

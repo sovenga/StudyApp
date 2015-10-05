@@ -78,6 +78,7 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\one.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\onePage.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\pagebook.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\purple.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\SmallLogo.scale-240.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\SplashScreen.scale-240.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Square71x71Logo.scale-240.png" />
